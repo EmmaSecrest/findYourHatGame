@@ -2,6 +2,7 @@ const prompt = require('prompt-sync')({sigint: true});
 
 const hat = '^';
 const hole = 'O';
+const holePercentage = 0.2;
 const fieldCharacter = '░';
 const pathCharacter = '*';
 const randArray = [fieldCharacter,hole];
@@ -21,7 +22,7 @@ class Field {
             }
             
         }
-        for (let i=0; i<(0.3*len*width); i++){
+        for (let i=0; i<(holePercentage*len*width); i++){
             ar[Math.floor(Math.random()*len)][Math.floor(Math.random()*width)] = hole;
             
             // console.log(i)
@@ -55,9 +56,10 @@ class Field {
         return true;
     }
     checkInvalidMove(x, y){
-        console.log(`New Coordinates ${x}, ${y}`)
+        // console.log(`New Coordinates ${x}, ${y}`)
 
         if(x<0 || y<0 || this._field[x][y] === hole || x >= this._field.length || y >= this._field[0].length){
+            console.log("Invalid Move");
             return false;
         }
         return true;
@@ -120,7 +122,7 @@ class Field {
 
 // const direction = prompt('Which Direction to move: ');
 
-
+console.log(`Valid Moves: Up-'u', Down-'d', left-'l', right-'r'`);
 
 const myField = new Field(Field.generateField(5,5));
 
