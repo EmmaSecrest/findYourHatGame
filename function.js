@@ -23,7 +23,6 @@ class Field {
                 if(this._field[x][y] === '^'){
                     return false;
                 }
-                
             }
         }
         console.log("You win babe.")
@@ -53,45 +52,41 @@ class Field {
     attemptMove(move){
         let x = this._curr[0];
         let y = this._curr[1];
+        let check;
         switch(move){
             case 'r':
                 y +=1;
-                if(this.checkInvalidMove(x, y)){
-                    this._field[x][y] = pathCharacter;
-                    this._curr = [x, y];
-                    this.print();
-                    return this.checkWin();
-                }
+                
+                check = this.makeMove(x,y);
+                return check;
             case 'l':
                 y-=1
-                if(this.checkInvalidMove(x, y)){
-                    this._field[x][y] = pathCharacter;
-                    this._curr = [x, y];
-                    this.print();
-                    return this.checkWin();
-                }
+                check = this.makeMove(x,y);
+                return check;
             case 'u':
                 x-=1;
-                if(this.checkInvalidMove(x, y)){
-                    this._field[x][y] = pathCharacter;
-                    this._curr = [x, y];
-                    this.print();
-                    return this.checkWin();
-                }
+                check = this.makeMove(x,y);
+                return check;
             case 'd':
                 x+=1;
-                if(this.checkInvalidMove(x, y)){
-                    this._field[x][y] = pathCharacter;
-                    this._curr = [x, y];
-                    this.print();
-                    return this.checkWin();
-                }
+                check = this.makeMove(x,y);
+                return check;
         }
 
     }
+    makeMove(u, v){
+        if(this.checkInvalidMove(u, v)){
+            this._field[u][v] = pathCharacter;
+            this._curr = [u, v];
+            this.print();
+            return this.checkWin();
+        }
+        return false;
+        
+    }
 }
 const myField = new Field([
-    ['*', '░', 'O'],
+    ['*', '░', '░'],
     ['░', 'O', '░'],
     ['░', '^', '░'],
 ]);
