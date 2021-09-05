@@ -29,8 +29,9 @@ class Field {
         return true;
     }
     checkInvalidMove(x, y){
-        if(this._field[x][y] === hole){
-            console.log('invalid Move');
+        console.log(`New Coordinates ${x}, ${y}`)
+
+        if(x<0 || y<0 || this._field[x][y] === hole || x >= this._field.length || y >= this._field[0].length){
             return false;
         }
         return true;
