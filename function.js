@@ -8,25 +8,27 @@ const pathCharacter = '*';
 const randArray = [fieldCharacter,hole];
 
 class Field {
-    
+    // create getters so you dont have to use this._field. The reason for the underscore is to keep the variable protected
     constructor(field) {
         this._field = field;
-        this.startPosition();
+        this.startPosition(); // why is a function in the constructor? I dont know if that is suppose to be in there
     }
     static generateField(len, width){
         let ar = [];
         for (let i=0; i<len; i++){
             ar[i] = [];
             for (let j =0; j<width; j++){
-                ar[i][j]= fieldCharacter;
+                ar[i][j]= fieldCharacter; // generating a blank field here. 
             }
             
         }
+        
         for (let i=0; i<(holePercentage*len*width); i++){
             ar[Math.floor(Math.random()*len)][Math.floor(Math.random()*width)] = hole;
             
             // console.log(i)
         }
+        // why are you initializing these why not just asign them to random number generators
         let dummyx = 0;
         let dummyy = 0;
         while(dummyx ===0 && dummyy ===0){
@@ -52,7 +54,7 @@ class Field {
                 }
             }
         }
-        console.log("You win babe.")
+        console.log("You win babe.") // don't really like the win message but that is a personal thing 
         return true;
     }
     checkInvalidMove(x, y){
