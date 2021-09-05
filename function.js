@@ -4,12 +4,33 @@ const hat = '^';
 const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
+const randArray = [fieldCharacter,hole];
 
 class Field {
     
     constructor(field) {
         this._field = field;
         this.startPosition();
+    }
+    static generateField(len, width){
+        let ar = [];
+        for (let i=0; i<len; i++){
+            ar[i] = [];
+            for (let j =0; j<width; j++){
+                ar[i][j]= randArray[Math.floor(Math.random()*2)];
+            }
+            
+        }
+        let dummyx = 0;
+        let dummyy = 0;
+        while(dummyx ===0 && dummyy ===0){
+            dummyx = Math.floor(Math.random()*width);
+        dummyy = Math.floor(Math.random()*len);
+        }
+        ar[dummyy][dummyx] = '^';
+        ar[0][0] = pathCharacter;
+        
+        return ar;
     }
     print() {
         for (let i = 0; i < this._field.length; i++) {
@@ -94,13 +115,15 @@ const myField = new Field([
 
 // const direction = prompt('Which Direction to move: ');
 
-myField.print();
-let flag = false;
+// myField.print();
+// let flag = false;
 
-while(flag !== true){ //! Correct while Loop
-    let mv = prompt('Move: ');
-    let flag = myField.attemptMove(mv);
-    if (flag === true){
-        break;
-    }
-}
+// while(flag !== true){ //! Correct while Loop
+//     let mv = prompt('Move: ');
+//     let flag = myField.attemptMove(mv);
+//     if (flag === true){
+//         break;
+//     }
+// }
+
+Field.generateField(4,4);
