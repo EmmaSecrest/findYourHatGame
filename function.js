@@ -17,9 +17,14 @@ class Field {
         for (let i=0; i<len; i++){
             ar[i] = [];
             for (let j =0; j<width; j++){
-                ar[i][j]= randArray[Math.floor(Math.random()*2)];
+                ar[i][j]= fieldCharacter;
             }
             
+        }
+        for (let i=0; i<(0.3*len*width); i++){
+            ar[Math.floor(Math.random()*len)][Math.floor(Math.random()*width)] = hole;
+            
+            // console.log(i)
         }
         let dummyx = 0;
         let dummyy = 0;
@@ -107,23 +112,25 @@ class Field {
         
     }
 }
-const myField = new Field([
-    ['*', '░', '░'],
-    ['░', 'O', '░'],
-    ['░', '^', '░'],
-]);
+// const myField = new Field([
+//     ['*', '░', '░'],
+//     ['░', 'O', '░'],
+//     ['░', '^', '░'],
+// ]);
 
 // const direction = prompt('Which Direction to move: ');
 
-// myField.print();
-// let flag = false;
 
-// while(flag !== true){ //! Correct while Loop
-//     let mv = prompt('Move: ');
-//     let flag = myField.attemptMove(mv);
-//     if (flag === true){
-//         break;
-//     }
-// }
 
-Field.generateField(4,4);
+const myField = new Field(Field.generateField(5,5));
+
+myField.print();
+let flag = false;
+
+while(flag !== true){ //! Correct while Loop
+    let mv = prompt('Move: ');
+    let flag = myField.attemptMove(mv);
+    if (flag === true){
+        break;
+    }
+}
