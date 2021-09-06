@@ -8,7 +8,7 @@ const pathCharacter = '*';
 const randArray = [fieldCharacter,hole];
 
 class Field {
-    
+    // looks like you are attempting to make a whole section of field characters then overwrite some with holes? is that what is happening? 
     constructor(field) {
         this._field = field;
         this.startPosition();
@@ -27,6 +27,7 @@ class Field {
             
             // console.log(i)
         }
+       // dont know if you need to initalize these.. I do not believe that you do 
         let dummyx = 0;
         let dummyy = 0;
         while(dummyx ===0 && dummyy ===0){
@@ -80,7 +81,7 @@ class Field {
     }
     attemptMove(move){
         let x = this._curr[0];
-        let y = this._curr[1];
+        let y = this._curr[1]; // why is this 1 and not 0 
         let check;
         switch(move){
             case 'r':
