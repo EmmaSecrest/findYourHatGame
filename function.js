@@ -52,7 +52,7 @@ class Field {
                 }
             }
         }
-        console.log("You win babe.")
+        console.log("You win!")
         return true;
     }
     checkInvalidMove(x, y){
